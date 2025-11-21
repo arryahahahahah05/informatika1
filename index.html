@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pixar Movie Picker — All In One</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Pixar Movie Picker</div>
+
+    <div class="controls">
+      <input id="searchInput" type="search" placeholder="Cari judul (ketik enter atau otomatis)..." />
+      <select id="genreSelect" aria-label="Pilih genre"><option value="">Semua Genre</option></select>
+      <select id="sortSelect" aria-label="Urutkan">
+        <option value="popular">Rekomendasi</option>
+        <option value="rating_desc">Rating ↑</option>
+        <option value="rating_asc">Rating ↓</option>
+        <option value="title_az">Judul A→Z</option>
+        <option value="title_za">Judul Z→A</option>
+        <option value="year_desc">Tahun Baru</option>
+      </select>
+      <button id="toggleDark" class="btn">Dark</button>
+      <button id="exportBtn" class="btn ghost">Export</button>
+      <label class="btn ghost file-label">Import
+        <input id="importFile" type="file" accept="application/json" />
+      </label>
+    </div>
+  </header>
+
+  <main class="main">
+    <aside class="sidebar">
+      <h3>Favorit</h3>
+      <ul id="favList" class="fav-list"><li class="muted">(Belum ada favorit)</li></ul>
+      <hr/>
+      <h4>Petunjuk</h4>
+      <p class="muted">Klik poster atau tombol <strong>Detail</strong> untuk melihat ulasan. Tombol <strong>Trailer</strong> membuka hasil pencarian trailer di YouTube.</p>
+    </aside>
+
+    <section class="content">
+      <div class="stats">
+        <span id="resultCount">0</span> hasil — <small id="activeFilters" class="muted"></small>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Modal detail -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button id="closeModal" class="modal-close" aria-label="Tutup">&times;</button>
+      <div class="modal-body">
+        <img id="modalPoster" alt="poster" class="modal-poster" />
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <div class="meta" id="modalMeta"></div>
+          <div class="rating" id="modalRating"></div>
+          <p id="modalReview" class="review"></p>
+          <div class="modal-actions">
+            <button id="modalFav" class="btn">♡ Simpan</button>
+            <a id="modalTrailer" class="btn ghost" target="_blank" rel="noopener">Trailer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">Made with ❤ — Demo edukasi • Data film contoh</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
